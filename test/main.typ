@@ -1,12 +1,9 @@
 
 #import "../src/bookpositing.typ"
-#import "/Utils/bg.typ"
-#import "/Utils/projets.typ"
 
-#show : projets.setup
 #show : bookpositing.contour
-#show : bg.default
 
+#set page(margin: 2cm)
 #set par(justify:true)
 
 #include "layout.typ"

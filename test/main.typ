@@ -3,8 +3,7 @@
 
 #show : bookpositing.contour
 
-#set page(margin: 2cm)
-#set par(justify:true)
+#set par(justify:true) 
 
 #include "layout.typ"
 #include "comment.typ"

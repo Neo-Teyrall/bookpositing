@@ -11,6 +11,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///// Layout
 ////////////////////////////////////////////////////////////////////////////////
+#let default-image = box(
+    stroke:2pt + teal,
+    width:100%,
+    height:100%,
+    std.image(
+        width: 100%-2pt,
+        height: 100%-2pt,
+        "/img.png",
+        fit: "stretch"
+    )
+)
 
 '// un layout mineur qui consite a placer ne haut d’une page une un texte qui
  // prendre toute la largeur d’une page au lieu de remplir les colone.

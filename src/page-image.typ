@@ -12,67 +12,7 @@
 #import "page-image/left-3-4.typ": left-3-4
 #import "page-image/right-3-4.typ": right-3-4
 
-////////////////////////////////////////////////////////////////////////////////
-///// Centred
-////////////////////////////////////////////////////////////////////////////////
-
-
-// Créer un image parfaitemen centré entre les deux page.
-#let centred(page:0,height:50%, over-marge:false, placement: bottom, content) = {
-  let h = get_h(height, over-marge: over-marge)
-
-  let (y_margin, shift) = if over-marge {
-    if placement == bottom {
-      (data.projets.data.page.margin.bottom, 0pt)
-    } else if tpp.placement == top {
-      (data.projets.data.page.margin.top, - data.projets.data.page.margin.top)
-    }
-  } else {
-    if placement == bottom {
-       (data.emarge-soft.bottom, 0pt)
-    } else if placement == top {
-       (data.emarge-soft.top,  - data.emarge-soft.top)
-    }
-  }
-
-  let odd-image() = {
-      meander.placed(
-          left + placement,
-          dx: -50%,
-          boundary: meander.contour.margin(3mm)
-      )[
-        #box(
-          height: h + shift,
-          width:data.projets.data.page.width -data.projets.data.page.margin.right -data.projets.data.page.margin.left,
-          place(dx: 0pt, dy: shift, align(
-            right,
-            box(stroke: 0pt, width:data.projets.data.page.width, height: h, align(center + horizon, content)),
-          )),
-        )
-      ]
-  }
-    let even-image() = {
-      meander.placed(
-          right + placement,
-          dx: 50%,
-          boundary:
-          meander.contour.margin(3mm)
-      )[
-        #box(
-          height: h + shift,
-          width:data.projets.data.page.width -data.projets.data.page.margin.right -data.projets.data.page.margin.left,
-          place(dx: 0pt, dy: shift, align(
-            left,
-            box(stroke: 0pt, width:data.projets.data.page.width, height: h, align(horizon + center, content)),
-          )),
-        )
-      ]
-    }
-
-    ((type:"two-page-image", page1:page, page2:page+1, odd-image:odd-image, even-image:even-image,layout: none,),)
-}
-
-
+#import "page-image/centred.typ": centred
 
 ////////////////////////////////////////////////////////////////////////////////
 ///// x/3

@@ -10,6 +10,7 @@
 #import "page-image/2-2.typ": full-2-2
 
 #import "page-image/left-3-4.typ": left-3-4
+#import "page-image/right-3-4.typ": right-3-4
 
 ////////////////////////////////////////////////////////////////////////////////
 ///// Centred
@@ -388,81 +389,6 @@
 //// 3/4-right /////////////////////////////////////////////////////////////////
 
 // Créer un image centré qui s’étend sur les 3/4 des deux pages et qui occupe plus la page de droite.
-#let right-3-4(
-    page: 0,
-    height: 50%,
-    over-marge: false,
-    placement: bottom,
-    content) = {
-  let h = get_h(height, over-marge: over-marge)
-  
-  let (y_margin, shift, x_margin) = if over-marge {
-    if placement == bottom {
-      (data.projets.data.page.margin.bottom, 0pt,data.projets.data.page.margin.right - data.side-marge)
-    } else if placement == top {
-      (data.projets.data.page.margin.top, - data.projets.data.page.margin.top,data.projets.data.page.margin.right - data.side-marge)
-    }
-  } else {
-    if placement == bottom {
-       (data.emarge-soft.bottom, 0pt, data.emarge-soft.right)
-    } else if placement == top {
-       (data.emarge-soft.top,  - data.emarge-soft.top, data.emarge-soft.right)
-    }
-  }
-  
-  let w =data.projets.data.page.width -data.projets.data.page.margin.left +data.projets.data.page.width / 2 + x_margin
-  
-  
-  let odd-image() = {
-    meander.placed(
-      right + placement,
-        boundary: meander.contour.margin(3mm)
-    )[
-      #box(
-        height: h,
-        width:data.projets.data.page.width,
-        place(
-          dx: - data.projets.data.page.margin.left -data.projets.data.page.margin.right + x_margin,
-          dy: shift,
-          align(right)[
-            #box(
-              width: w,
-              height: h + y_margin,
-              clip: true,
-              
-              align(center + horizon, content),
-            )
-          ],
-        ),
-      )
-    ]
-  }
-  let even-image() = {
-    meander.placed(
-      right + placement,
-      dx: 50%,
-        boundary: meander.contour.margin(3mm)
-    )[
-      #box(
-        height: h,
-        width:data.projets.data.page.width,
-        place(
-          dx: 0pt,
-          dy: shift,
-          align(left)[
-            #box(
-              width: w,
-              height: h + y_margin,
-              clip: true,
-              align(center + horizon, content),
-            )
-          ],
-        ),
-      )
-    ]
-  }
-  ((type: "two-page-image", page1: page, page2: page + 1, odd-image: odd-image, even-image: even-image, layout:none),)
-}
 
 //// 1/4 ///////////////////////////////////////////////////////////////////////
 

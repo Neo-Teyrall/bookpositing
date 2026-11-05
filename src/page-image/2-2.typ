@@ -16,12 +16,12 @@
   placement: bottom,
   content,
 ) = {
-  
+    
   // margin and shift
   let marges_and_shift() = if marge == "none" {
     if placement == top {
       (
-        data.projets.data.page.margin.top + std.page.bleed,
+          std.page.margin.top + std.page.bleed,
         -(data.projets.data.page.margin.top + std.page.bleed),
         data.main-marge.get().odd.right + std.page.bleed,
         std.page.bleed,

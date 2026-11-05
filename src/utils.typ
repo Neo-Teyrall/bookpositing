@@ -9,6 +9,46 @@
     page.height - page.margin.top - page.margin.bottom
 }
 
+#let get_y_shift_marge(marge: "main", placement: top) = {
+  if marge == "none" {
+    if placement == top {
+      (
+        data.projets.data.page.margin.top + std.page.bleed,
+        -(data.projets.data.page.margin.top + std.page.bleed),
+      )
+    } else if placement == bottom {
+      (
+        data.projets.data.page.margin.top + std.page.bleed,
+        0pt,
+      )
+    }
+  } else if marge == "main" {
+    if placement == top {
+      (
+        0pt,
+        0pt,
+      )
+    } else if placement == bottom {
+      (
+        0pt,
+        0pt,
+      )
+    }
+  } else if marge == "second" {
+    if placement == top {
+      (
+        data.main-marge.get().even.top - data.second-marge.get().even.top,
+        -(data.main-marge.get().even.top - data.second-marge.get().even.top),
+      )
+    } else if placement == bottom {
+      (
+        data.main-marge.get().even.top - data.second-marge.get().even.top,
+        0pt,
+      )
+    }
+  }
+}
+
 #let get_h2(height, marge: "main", full-page: false, placement: bottom) = {
   if type(height) == ratio {
     let text-height = height * get_text_height()

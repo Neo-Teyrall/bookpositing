@@ -1,5 +1,5 @@
 
-#import "/src/utils.typ": get_h, get_h2
+#import "/src/utils.typ"
 #import "/src/data.typ"
 #import "@preview/meander:0.4.4"
 
@@ -16,71 +16,13 @@
   placement: bottom,
   content,
 ) = {
-    
-  // margin and shift
-  let marges_and_shift() = if marge == "none" {
-    if placement == top {
-      (
-          std.page.margin.top + std.page.bleed,
-        -(data.projets.data.page.margin.top + std.page.bleed),
-        data.main-marge.get().odd.right + std.page.bleed,
-        std.page.bleed,
-        0pt,
-      )
-    } else if placement == bottom {
-      (
-        data.projets.data.page.margin.top + std.page.bleed,
-        0pt,
-        data.main-marge.get().odd.right + std.page.bleed,
-        std.page.bleed,
-        0pt,
-      )
-    }
-  } else if marge == "main" {
-    if placement == top {
-      //(0pt, 0pt, data.main-marge.get().odd.right*2, data.get-main-side-marge().sum())
-      (
-        0pt,
-        0pt,
-        0pt,
-        0pt,
-        data.get-main-side-marge().sum(),
-      )
-    } else if placement == bottom {
-      (
-        0pt,
-        0pt,
-        0pt, //data.main-marge.get().odd.right,
-        0pt,
-        data.get-main-side-marge().sum(),
-      )
-    }
-  } else if marge == "second" {
-    if placement == top {
-      (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
-        -(data.main-marge.get().even.top - data.second-marge.get().even.top),
-        data.second-marge.get().odd.right,
-        0pt,
-        data.get-second-side-marge().sum(),
-      )
-    } else if placement == bottom {
-      (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
-        0pt,
-        data.second-marge.get().odd.right,
-        0pt,
-        data.get-second-side-marge().sum(),
-      )
-    }
-  }
-  
   // l’image de la gauche
   let even-image() = {
-    let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
-    let w = (data.projets.data.page.width + bleed) * 2 - sum-side-marge
+      let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
+      let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
+      let w = (std.page.width + std.page.bleed) * 2 - x_margin*2
     // compute height
-    let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
+      let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
     meander.placed(
       left + placement,
     )[
@@ -101,13 +43,17 @@
   
   // l’image de la droite
   let odd-image() = {
-    let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
-    let w = (data.projets.data.page.width + bleed) * 2 - sum-side-marge
-    let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
+       let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
+      let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
+      
+      let w = (std.page.width + bleed) * 2 - sum-side-marge
+      let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
     meander.placed(
       right + placement,
     )[
-      #align(right, box(height: h1, width: data.projets.data.page.width, stroke: 4pt + yellow)[
+      #align(right,
+          box(height: h1,
+              width: std.page.width, stroke: 4pt + yellow)[
         #place(dx: x_margin, dy: y_shift, right)[
           #align(right)[
             #box(

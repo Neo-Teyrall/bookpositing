@@ -15,6 +15,7 @@
     stroke:2pt + teal,
     width:100%,
     height:100%,
+
     std.image(
         width: 100%-2pt,
         height: 100%-2pt,
@@ -32,19 +33,19 @@
 #let layout-header(page: 0,full-page: false,colfill:false, content) = {
   let layout(major: none) = {
     if major == "1/3-right" {
-      let size = measure(box(width: page-layout.width * 90%, content))
+        let size = measure(box(width: get_page_layout().width * 90%, content))
 
       meander.container(
           dx:-6%,
           width: 90%,
-          height: size.height + 1em, 
+          height: size.height + 1em,
           margin: 6mm,
       )
     } else if major == "1/3" {
 
     }else if major == "2/3-right" {
         let w = 78%
-        let size = measure(box(width: page-layout.width*w, content))
+        let size = measure(box(width: get_page_layout().width*w, content))
       meander.container(
           dx:-4%,
         width: w,
@@ -52,7 +53,7 @@
         margin: 6mm,
       )
     } else{
-      let size = measure(box(width: page-layout.width, content))
+        let size = measure(box(width: get_page_layout().width, content))
       meander.container(
         width: 100%,
         height: if full-page{100%} else {size.height},

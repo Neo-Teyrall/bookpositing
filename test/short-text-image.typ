@@ -25,7 +25,7 @@
     ]
     )
     bookpositing.page-image.full-2-2(page:0,
-        over-marge: true,
+           marge: "none",
         height:46%,
         std.image(width: 100%,
             height: 100%,
@@ -50,7 +50,7 @@
         #lorem(100)]
     )
     bookpositing.page-image.left-3-4(page:0,
-        over-marge: true,
+           marge: "none",
         std.image(width: 100%,
             height: 100%,
             "/img.png",fit: "stretch")
@@ -88,7 +88,7 @@
         #lorem(600)]
     )
     bookpositing.page-image.left-1-3(page:0,
-        over-marge: false,
+           marge: "none",
         std.image(width: 100%,
             height: 100%,
             "/img.png",fit: "stretch")
@@ -122,7 +122,7 @@
     )
     bookpositing.content(lorem(500))
     bookpositing.page-image.right-1-3(page:0,
-        over-marge: false,
+           marge: "none",
         std.image(width: 100%,
             height: 100%,
             "/img.png",fit: "stretch")
@@ -148,7 +148,7 @@
         #lorem(550)]
     )
     bookpositing.page-image.i1-4(page:0,
-        over-marge: false,
+           marge: "none",
         even:true,
         std.image(width: 100%,
             height: 100%,
@@ -197,14 +197,13 @@
 
         #lorem(100)
 
-        
         #lorem(500)
      ]
 
     
     
     bookpositing.page-image.left-2-3(page:0,
-        over-marge: false,
+           marge: "none",
         std.image(width: 100%,
             height: 100%,
             "/img.png",fit: "stretch")
@@ -252,7 +251,7 @@
     )
 
     bookpositing.page-image.right-2-3(page:0,
-        over-marge: true,
+           marge: "none",
 
         placement: top,
         std.image(width: 100%,

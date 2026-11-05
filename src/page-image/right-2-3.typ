@@ -18,62 +18,6 @@
     placement = top
   }
     
-      let marges_and_shift() = if marge == "none" {
-    if placement == top {
-      (
-        data.projets.data.page.margin.top + std.page.bleed,
-        - (data.projets.data.page.margin.top + std.page.bleed),
-        data.main-marge.get().odd.right + std.page.bleed,
-        std.page.bleed,
-        0pt,
-      )
-    } else if placement == bottom {
-      (
-        data.projets.data.page.margin.top + std.page.bleed,
-        0pt,
-        data.main-marge.get().odd.right + std.page.bleed,
-        std.page.bleed,
-        0pt,
-      )
-    }
-  } else if marge == "main" {
-    if placement == top {
-      //(0pt, 0pt, data.main-marge.get().odd.right*2, data.get-main-side-marge().sum())
-      (
-        0pt,
-        0pt,
-        0pt,
-        0pt,
-        data.get-main-side-marge().sum(),
-      )
-    } else if placement == bottom {
-      (
-        0pt,
-        0pt,
-        0pt, //data.main-marge.get().odd.right,
-        0pt,
-        data.get-main-side-marge().sum(),
-      )
-    }
-  } else if marge == "second" {
-    if placement == top {
-      (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
-        -(data.main-marge.get().even.top - data.second-marge.get().even.top),
-        data.second-marge.get().odd.right,
-        0pt,
-        data.get-second-side-marge().sum(),
-      )
-    } else if placement == bottom {
-      (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
-        0pt,
-        data.second-marge.get().odd.right,
-        0pt,
-        data.get-second-side-marge().sum(),
-      )
-    }
-  }
 
   let get_w(bleed, marge) = {
         let even-page = (utils.get_text_width()
@@ -88,7 +32,9 @@
 
   
   let odd-image() = {
-    let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
+         let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
+      let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
+    
     let (h1, h2) = utils.get_h2(
       height,
       marge: marge,
@@ -116,7 +62,9 @@
       ]
   }
   let even-image() = {
-          let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
+         let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
+      let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
+          
       let (h1, h2) = utils.get_h2(height, marge: marge, full-page: full-page, placement: placement)
       let w = get_w(bleed, x_margin)
 

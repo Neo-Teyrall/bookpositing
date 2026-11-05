@@ -9,16 +9,39 @@
     page.height - page.margin.top - page.margin.bottom
 }
 
+
+#let get_x_marges_and_shift(marge:"main") = {
+  if marge == "none" {
+    (
+        std.page.margin.right + std.page.bleed,
+      std.page.bleed,
+      0pt,
+    )
+  } else if marge == "main" {
+    (
+      0pt,
+      0pt,
+      data.get-main-side-marge().sum(),
+    )
+  } else if marge == "second" {
+      (
+        data.second-marge.get().odd.right,
+        0pt,
+        data.get-second-side-marge().sum(),
+      )
+  }
+}
+
 #let get_y_shift_marge(marge: "main", placement: top) = {
   if marge == "none" {
     if placement == top {
       (
-        data.projets.data.page.margin.top + std.page.bleed,
-        -(data.projets.data.page.margin.top + std.page.bleed),
+          std.page.margin.top + std.page.bleed,
+          -(std.page.margin.top + std.page.bleed),
       )
     } else if placement == bottom {
       (
-        data.projets.data.page.margin.top + std.page.bleed,
+          std.page.margin.top + std.page.bleed,
         0pt,
       )
     }
@@ -37,12 +60,12 @@
   } else if marge == "second" {
     if placement == top {
       (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
-        -(data.main-marge.get().even.top - data.second-marge.get().even.top),
+        page.margin.top - data.second-marge.get().even.top,
+        -(page.margin.top - data.second-marge.get().even.top),
       )
     } else if placement == bottom {
       (
-        data.main-marge.get().even.top - data.second-marge.get().even.top,
+        page.margin.top - data.second-marge.get().even.top,
         0pt,
       )
     }

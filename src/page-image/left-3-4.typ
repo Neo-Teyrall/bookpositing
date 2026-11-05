@@ -1,6 +1,6 @@
 
 
-#import "/src/utils.typ": get_h
+#import "/src/utils.typ": get_h, get_h2
 #import "/src/data.typ"
 #import "@preview/meander:0.4.4"
 
@@ -10,10 +10,10 @@
     page:0,
     height:50%,
     marge:"main",
+    full-page:false,
     placement: bottom,
     content) = {
 
-    let h = get_h(height, over-marge: true)
     
     let marges_and_shift() = if marge == "none" {
       if placement == top {
@@ -74,6 +74,7 @@
   
 
     let odd-image() = {
+        let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
           let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
             let w = (
        data.projets.data.page.width
@@ -88,7 +89,7 @@
           boundary: meander.contour.margin(1mm)
         )[
           #box(
-            height: h,
+            height: h1,
             width:data.projets.data.page.width,
             place(
               dx: - data.projets.data.page.margin.right -data.projets.data.page.margin.left,
@@ -96,7 +97,7 @@
               align(right)[
                 #box(
                   width: w,
-                  height: h + y_margin,
+                  height: h2,
                   align(center + horizon, content),
                 )
               ],
@@ -113,13 +114,14 @@
         +data.projets.data.page.width / 2
         + x_margin
     )
+        let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
 
         meander.placed(
           right + placement,
             boundary: meander.contour.margin(3mm)
         )[
           #box(
-            height: h,
+            height: h1,
             width:data.projets.data.page.width,
             place(
               dx: -x_margin,
@@ -127,7 +129,7 @@
               align(left)[
                 #box(
                   width: w,
-                  height: h + y_margin,
+                  height: h2,
                   align(center + horizon, content),
                 )
               ],

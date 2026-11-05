@@ -1,4 +1,4 @@
-#import "/src/utils.typ": get_h
+#import "/src/utils.typ": get_h, get_h2
 #import "/src/data.typ"
 #import "@preview/meander:0.4.4"
 
@@ -7,11 +7,9 @@
   height: 50%,
   marge: "none",
   placement: bottom,
+  full-page: false,
   content,
 ) = {
-  let h = get_h(height, over-marge: true)
-  
-  
     let marges_and_shift() = if marge == "none" {
       if placement == top {
         (
@@ -78,12 +76,13 @@
         +data.projets.data.page.width / 2
         + x_margin
     )
+      let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
     meander.placed(
       right + placement,
       boundary: meander.contour.margin(3mm),
     )[
       #box(
-        height: h,
+        height: h1,
         width: data.projets.data.page.width,
         place(
           dx: -data.projets.data.page.margin.left - data.projets.data.page.margin.right + x_margin,
@@ -91,7 +90,7 @@
           align(right)[
             #box(
               width: w,
-              height: h + y_margin,
+              height: h2,
               clip: true,
               
               align(center + horizon, content),
@@ -109,13 +108,14 @@
         +data.projets.data.page.width / 2
         + x_margin
     )
+      let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
     meander.placed(
       right + placement,
       dx: 50%,
       boundary: meander.contour.margin(3mm),
     )[
       #box(
-        height: h,
+        height: h1,
         width: data.projets.data.page.width,
         place(
           dx: 0pt,
@@ -123,7 +123,7 @@
           align(left)[
             #box(
               width: w,
-              height: h + y_margin,
+              height: h2,
               clip: true,
               align(center + horizon, content),
             )

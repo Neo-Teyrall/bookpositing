@@ -1,45 +1,56 @@
 
 #import "data.typ"
 
+#let get_text_width() = {
+    page.width - page.margin.left - page.margin.right
+}
+
+#let get_text_height() = {
+    page.height - page.margin.top - page.margin.bottom
+}
 
 #let get_h2(height, marge: "main", full-page: false, placement: bottom) = {
- 
   if type(height) == ratio {
-      let text-height = height * (page.height - page.margin.top - page.margin.bottom)
+    let text-height = height * get_text_height()
     if full-page {
       if marge == "main" {
-          (text-height, text-height )
+        (text-height, text-height)
       } else if marge == "second" {
-          (text-height, ( text-height
-          + (page.margin.top - data.second-marge.get().even.top)
-          + (page.margin.bottom - data.second-marge.get().even.bottom)))
+        (
+          text-height,
+          (
+            text-height
+              + (page.margin.top - data.second-marge.get().even.top)
+              + (page.margin.bottom - data.second-marge.get().even.bottom)
+          ),
+        )
       } else if marge == "none" {
-          (text-height, text-height + page.margin.top + page.margin.bottom + (page.bleed * 2))
+        (text-height, text-height + page.margin.top + page.margin.bottom + (page.bleed * 2))
       }
     } else {
       if marge == "main" {
         if placement == top {
           (text-height, text-height)
         } else if placement == bottom {
-            (text-height, text-height)
+          (text-height, text-height)
         }
       } else if marge == "second" {
         if placement == top {
-          (text-height, text-height + (page.margin.top -data.second-marge.get().even.top))
+          (text-height, text-height + (page.margin.top - data.second-marge.get().even.top))
         } else if placement == bottom {
-            (text-height, text-height + (page.margin.top -data.second-marge.get().even.bottom))
+          (text-height, text-height + (page.margin.top - data.second-marge.get().even.bottom))
         }
       } else if marge == "none" {
         if placement == top {
-            (text-height, text-height + page.margin.top + page.bleed)
+          (text-height, text-height + page.margin.top + page.bleed)
         } else if placement == bottom {
-            (text-height, text-height + page.margin.bottom + page.bleed)
-        }
+          (text-height, text-height + page.margin.bottom + page.bleed)
+         }
       }
     }
   } else {
-      // version temporaire
-    (height,height)
+    // version temporaire
+    (height, height)
   }
 }
 

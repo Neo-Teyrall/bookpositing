@@ -95,18 +95,18 @@
     meander.container(
       dx: 15%,
       width: 45% - 3mm,
-        height: 95%,
+        height: 100%,
       margin: 6mm,
     )
     meander.container(
       dx: 15%,
       width: 90%,
-        height: 95%,
+        height: 100%,
     )
   } else {
     meander.container(
       width: 45%,
-        height: 95%,
+        height: 100%,
       margin: 6mm,
     )
   }
@@ -170,5 +170,4 @@
     )
   }
 }
-
 

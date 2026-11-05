@@ -2,7 +2,7 @@
 
 #import "/src/layout.typ" : *
 #import "/src/data.typ"
-#import "/src/utils.typ" : get_h
+#import "/src/utils.typ" : get_h, get_h2
 
 // Créer un image qui s’étend sur une page entière.
 #let full-1-2(
@@ -19,10 +19,7 @@
         over-marge = true
         placement = top
     }
-    // compute height
-    let h = get_h(height,over-marge: true)
     // margin and shift
-
                 let marges_and_shift() = if marge == "none" {
             if placement == top {
                 (
@@ -80,17 +77,18 @@
     let picture() = if not even {
         let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
         let w = (std.page.width + bleed) - sum-side-marge
+        let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
       meander.placed(
         right + placement,
       )[
           #align(right)[
-              #box(height: h, width:w)[
+              #box(height: h1, width:w)[
                   #place(dx: -x_margin,
                       dy: y_shift)[
                           #box(
                               clip: true,
                               width: w,
-                              height: h + y_margin,
+                              height: h2,
                               align(center + horizon, content),
                           )
                       ]
@@ -100,17 +98,18 @@
     } else {
         let (y_margin, y_shift, x_margin, bleed, sum-side-marge) = marges_and_shift()
         let w = (std.page.width + bleed) - sum-side-marge
+        let (h1,h2) = get_h2(height, marge:marge,full-page: full-page)
       meander.placed(
         left + placement,
       )[
           #align(left)[
-              #box(height: h, width:w)[
+              #box(height: h1, width:w)[
           #place(dx: x_margin, dy: y_shift)[
          
               #box(
                 clip: true,
                 width: w,
-                height: h + y_margin,
+                height: h2,
                 align(center + horizon, content),
               )
             ]

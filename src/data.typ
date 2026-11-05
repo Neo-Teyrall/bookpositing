@@ -87,7 +87,7 @@
 
 
 #let contour(body) = {
-    set std.page(bleed : 10mm,
+    set std.page(bleed : 5mm,
        foreground: context{
         if calc.even(counter(std.page).get().first()) {
         [

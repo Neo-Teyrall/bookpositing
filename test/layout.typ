@@ -1,13 +1,7 @@
 
-
 #import "../src/bookpositing.typ"
-// #import "/Utils/bg.typ"
-// #import "/Utils/projets.typ"
 
-// #show : projets.setup
-#show : bookpositing.contour
-// #show : bg.default
-
+#show : bookpositing.marge-debug
 
 #set par(justify:true)
 

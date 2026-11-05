@@ -15,9 +15,8 @@
       let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
       let w = (
-       std.page.width
-        -std.page.margin.left
-        +std.page.width / 2
+          data.get_page_layout().width + data.get_inside()*2
+        + data.get_page_layout().width / 2
         + x_margin
     )
       let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
@@ -25,11 +24,11 @@
       right + placement,
       boundary: meander.contour.margin(3mm),
     )[
-      #box(
+      #align(right,box(
         height: h1,
         width: std.page.width,
         place(
-          dx: -std.page.margin.left - std.page.margin.right + x_margin,
+          dx: 0pt,
           dy: y_shift,
           align(right)[
             #box(
@@ -42,6 +41,7 @@
           ],
         ),
       )
+      )
     ]
   }
   let even-image() = {
@@ -49,9 +49,8 @@
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
           
       let w = (
-       std.page.width
-        -std.page.margin.left
-        +std.page.width / 2
+          data.get_page_layout().width + data.get_inside()*2
+        + data.get_page_layout().width / 2
         + x_margin
     )
       let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)

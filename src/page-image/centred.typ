@@ -10,10 +10,12 @@
         placement= top
     }
 
+    let get_w() = utils.get_text_width()
   let odd-image() = {
      let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
       let (h1,h2) = utils.get_h2(height, full-page : full-page,marge : marge)
+      let w = get_w()
       meander.placed(
           left + placement,
           dx: -50%,
@@ -21,7 +23,7 @@
       )[
         #box(
           height: h1,
-          width:std.page.width -std.page.margin.right -std.page.margin.left,
+          width:w,
           place(dx: 0pt, dy: y_shift, align(
             right,
             box(stroke: 0pt, width:std.page.width, height: h2 , align(center + horizon, content)),
@@ -33,6 +35,7 @@
          let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
         let (h1,h2) = utils.get_h2(height, full-page : full-page,marge : marge)
+        let w = get_w()
         meander.placed(
           right + placement,
           dx: 50%,
@@ -41,7 +44,7 @@
       )[
         #box(
           height: h1,
-          width:std.page.width -std.page.margin.right -std.page.margin.left,
+          width: w ,
           place(dx: 0pt, dy: y_shift, align(
             left,
             box(stroke: 0pt, width:std.page.width, height: h2, align(horizon + center, content)),

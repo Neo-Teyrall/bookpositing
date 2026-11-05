@@ -21,11 +21,11 @@
 
   let get_w(bleed, marge) = {
         let even-page = (utils.get_text_width()
-        + std.page.margin.right
+        + data.get_inside()
           + marge)
 
         let odd-page = ((utils.get_text_width() * 0.24)
-        + std.page.margin.left)
+        + data.get_inside())
 
         odd-page + even-page
     }

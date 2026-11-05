@@ -7,7 +7,7 @@
     let placement = top
 
     let get_w() = (
-      std.page.width / 2 + std.page.margin.left + std.page.margin.right
+        std.page.width / 2 + data.get_inside()*2
     )
 
     let odd-image() = {
@@ -32,8 +32,8 @@
       let (h1, h2) = utils.get_h2(height, marge: marge, full-page: true, placement: placement)
       let w = get_w()
       meander.placed(
-        right + placement,
-        dx: std.page.margin.left * 2 + std.page.margin.right,
+        left + placement,
+          dx: 50%,
         boundary: meander.contour.margin(3mm),
       )[
         

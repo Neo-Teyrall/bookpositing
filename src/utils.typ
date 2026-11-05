@@ -2,7 +2,23 @@
 #import "data.typ"
 
 #let get_text_width() = {
-    page.width - page.margin.left - page.margin.right
+  let margin = 0
+  if not page.margin.keys().contains("left") and not page.margin.keys().contains("right") {
+    margin = 5cm
+  } else if page.margin.keys().contains("left") and not page.margin.keys().contains("right") {
+    margin = page.margin.left + 2.5cm
+  } else if not page.margin.keys().contains("left") and page.margin.keys().contains("right") {
+    margin = page.margin.right + 2.5cm
+  } else if page.margin.keys().contains("left") and page.margin.keys().contains("right") {
+    margin = page.margin.left + page.margin.right
+  } else if page.margin.keys().contains("outside") and page.margin.keys().contains("inside") {
+    margin = page.margin.inside + page.margin.outside
+  } else if not page.margin.keys().contains("outside") and page.margin.keys().contains("inside") {
+    margin = page.margin.inside + 2.5cm
+  } else if page.margin.keys().contains("outside") and not page.margin.keys().contains("inside") {
+    margin = page.margin.outside + 2.5cm
+  }
+  page.width - margin
 }
 
 #let get_text_height() = {
@@ -25,9 +41,9 @@
     )
   } else if marge == "second" {
       (
-        data.second-marge.get().odd.right,
+          data.get_outside() - data.second-marge.get().outside,
         0pt,
-        data.get-second-side-marge().sum(),
+          data.get-second-side-marge().sum(),
       )
   }
 }
@@ -60,12 +76,12 @@
   } else if marge == "second" {
     if placement == top {
       (
-        page.margin.top - data.second-marge.get().even.top,
-        -(page.margin.top - data.second-marge.get().even.top),
+        page.margin.top - data.second-marge.get().top,
+        -(page.margin.top - data.second-marge.get().top),
       )
     } else if placement == bottom {
       (
-        page.margin.top - data.second-marge.get().even.top,
+        page.margin.top - data.second-marge.get().top,
         0pt,
       )
     }
@@ -83,8 +99,8 @@
           text-height,
           (
             text-height
-              + (page.margin.top - data.second-marge.get().even.top)
-              + (page.margin.bottom - data.second-marge.get().even.bottom)
+              + (page.margin.top - data.second-marge.get().top)
+              + (page.margin.bottom - data.second-marge.get().bottom)
           ),
         )
       } else if marge == "none" {
@@ -99,9 +115,9 @@
         }
       } else if marge == "second" {
         if placement == top {
-          (text-height, text-height + (page.margin.top - data.second-marge.get().even.top))
+          (text-height, text-height + (page.margin.top - data.second-marge.get().top))
         } else if placement == bottom {
-          (text-height, text-height + (page.margin.top - data.second-marge.get().even.bottom))
+          (text-height, text-height + (page.margin.top - data.second-marge.get().bottom))
         }
       } else if marge == "none" {
         if placement == top {

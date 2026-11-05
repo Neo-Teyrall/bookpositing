@@ -1,8 +1,7 @@
 
 #import "../src/bookpositing.typ"
-
-#show : bookpositing.contour
-
+#bookpositing.set_second-marge(outside:0.5cm)
+#show : bookpositing.marge-debug
 #set par(justify:true) 
 
 #include "layout.typ"

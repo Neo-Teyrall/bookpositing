@@ -35,7 +35,7 @@
          let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
     
-    let (h1, h2) = utils.get_h2(
+    let (h1, h2) = utils.get_h(
       height,
       marge: marge,
       full-page: full-page,
@@ -65,7 +65,7 @@
          let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
           
-      let (h1, h2) = utils.get_h2(height, marge: marge, full-page: full-page, placement: placement)
+      let (h1, h2) = utils.get_h(height, marge: marge, full-page: full-page, placement: placement)
       let w = get_w(bleed, x_margin)
 
     meander.placed(

@@ -15,7 +15,7 @@
   content,
 ) = {
   let odd-image() = {
-    let (h1, h2) = utils.get_h2(height, marge: marge, full-page: full-page)
+    let (h1, h2) = utils.get_h(height, marge: marge, full-page: full-page)
     let (y_margin, y_shift) = utils.get_y_shift_marge(marge: marge, placement: placement)
     let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge: marge)
     let w = (
@@ -52,7 +52,7 @@
     let w = (
       utils.get_page_layout().width + utils.get_inside() * 2 + utils.get_page_layout().width / 2 + x_margin
     )
-    let (h1, h2) = utils.get_h2(height, marge: marge, full-page: full-page)
+    let (h1, h2) = utils.get_h(height, marge: marge, full-page: full-page)
     
     meander.placed(
       right + placement,

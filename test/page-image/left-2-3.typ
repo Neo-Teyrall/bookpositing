@@ -2,7 +2,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.secondary-layout.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header( [
     == 2/3
     
     #lorem(100)
@@ -25,11 +25,12 @@
     marge: "main",
     bookpositing.default-image,
   )
+
 })
 
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.secondary-layout.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header([
     == 2/3
     
     #lorem(100)
@@ -56,7 +57,7 @@
 })
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.secondary-layout.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header( [
     == 2/3
     
     #lorem(100)

@@ -25,7 +25,7 @@
       let (x_margin, bleed, sum-side-marge) = utils.get_x_marges_and_shift(marge:marge)
         let w = (utils.get_page_layout().width + utils.get_inside() + utils.get_bleed_inside() ) + x_margin
          
-        let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
+        let (h1,h2) = utils.get_h(height, marge:marge,full-page: full-page)
       meander.placed(
         right + placement,
       )[
@@ -49,7 +49,7 @@
         
         //let w = (std.page.width + bleed) - sum-side-marge
         let w = (utils.get_page_layout().width + utils.get_inside() + utils.get_bleed_inside() ) + x_margin
-        let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
+        let (h1,h2) = utils.get_h(height, marge:marge,full-page: full-page)
       meander.placed(
         left + placement,
       )[

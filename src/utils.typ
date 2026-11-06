@@ -245,7 +245,7 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
 
 }
 
-#let get_h2(height, marge: "main", full-page: false, placement: bottom) = {
+#let get_h(height, marge: "main", full-page: false, placement: bottom) = {
   if type(height) == ratio {
     let text-height = height * get_text_height()
     if full-page {
@@ -289,28 +289,6 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
     (height, height)
   }
 }
-
-#let get_h(height, over-marge: false, full-page: false, placement: bottom) = {
-  if type(height) == ratio {
-    (
-      height
-        * if over-marge {
-          if full-page {
-            data.projets.data.page.height
-          } else if placement == top {
-            data.projets.data.page.height - data.data.emarge-full.bottom
-          } else if placement == bottom {
-            data.projets.data.page.height - data.emarge-full.top
-          }
-        } else {
-          data.projets.data.page.height - data.emarge-soft.top - data.emarge-soft.bottom - 6pt
-        }
-    )
-  } else {
-    height
-  }
-}
-
 
 
 #let get_page_layout() = {

@@ -19,7 +19,7 @@
         + utils.get_page_layout().width / 2
         + x_margin
     )
-      let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
+      let (h1,h2) = utils.get_h(height, marge:marge,full-page: full-page)
     meander.placed(
       right + placement,
       boundary: meander.contour.margin(3mm),
@@ -53,7 +53,7 @@
         + utils.get_page_layout().width / 2
         + x_margin
     )
-      let (h1,h2) = utils.get_h2(height, marge:marge,full-page: full-page)
+      let (h1,h2) = utils.get_h(height, marge:marge,full-page: full-page)
     meander.placed(
       right + placement,
       dx: 50%,

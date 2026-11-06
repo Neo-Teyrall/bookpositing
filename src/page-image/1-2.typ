@@ -16,7 +16,6 @@
 
     if full-page{
         height = 100%
-        over-marge = true
         placement = top
     }
 

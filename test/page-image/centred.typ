@@ -129,7 +129,7 @@
 
     bookpositing.content(lorem(500))
 
-})
+}) 
 
 #bookpositing.composing(2,debug: true, {
     bookpositing.secondary-layout.layout-header(page:0,

@@ -45,9 +45,18 @@
     ]
 ]
 
-// balise de commentaire. Un commentaire qui se place dans la marge et organise
-// la composition en fonction de ce dernier.
-#let comment(page: 0, even: true, placement: top + right, content) = {
+/// balise de commentaire. Un commentaire qui se place dans la marge et organise
+/// la composition en fonction de ce dernier.
+#let comment(
+    /// the page where display the marge comment, relative to the composing
+    /// region.
+    page: 0,
+    /// the page is a even or odd page
+    even: true,
+    /// the placement of marge comment 
+    placement: top + right,
+    /// The content to display
+    content) = {
   if not even {
     if placement.x == right or placement.x == none {
       let com() = meander.placed(
@@ -127,8 +136,12 @@
   }
 }
 
-// ajoute une balise de contenue.
-#let content(content, container-break:true) = {
+/// This function contain the document content and fill it in the columne
+#let content(
+    /// The content
+    content,
+    /// break the content column if true
+    container-break:true) = {
     if container-break{
     ((type: "content", content: content, container-break: meander.colfill),)
     }else{

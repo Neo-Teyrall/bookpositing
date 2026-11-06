@@ -261,7 +261,7 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
           ),
         )
       } else if marge == "none" {
-          (text-height, text-height + get_top() + get_bottom() + (page.bleed * 2))
+          (text-height, text-height + get_top() + get_bottom() + (get_bleed_top()))
       }
     } else {
       if marge == "main" {

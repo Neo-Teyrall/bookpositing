@@ -12,6 +12,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 ///// Layout
 ////////////////////////////////////////////////////////////////////////////////
+
+/// a default image use to test the layout and images
 #let default-image = box(
     stroke:2pt + teal,
     width:100%,
@@ -25,12 +27,12 @@
     )
 )
 
-'// un layout mineur qui consite a placer ne haut d’une page une un texte qui
- // prendre toute la largeur d’une page au lieu de remplir les colone.
+/// un layout mineur qui consite a placer ne haut d’une page une un texte qui
+/// prendre toute la largeur d’une page au lieu de remplir les colone.
 
-//  La page sur laquelle placer le layout secondaire et le texte
-// full-page forcer le layout a prendre toute la largeur de la page 
-// colfill: demader a meander de passer a la prochaine zone de contenue.
+///  La page sur laquelle placer le layout secondaire et le texte
+/// full-page forcer le layout a prendre toute la largeur de la page 
+/// colfill: demader a meander de passer a la prochaine zone de contenue.
 #let layout-header(page: 0,full-page: false,colfill:false, content) = {
   let layout(major: none) = {
     if major == "1/3-right" {
@@ -85,7 +87,6 @@
 /// place un contenue au millieu de la page de manière coupé la mise en page en
 /// deux colone de manière a ce que le contenue commence par remplir les deux
 /// colone supérieur avant de continuer sur les deux colone infèrieure
-
 #let layout-sep(page: 0,full-page: false,colfill:false,height:0%, content) = {
   let layout(major: none) = {
       // en fonction du layout principale adapter la découpe
@@ -184,7 +185,6 @@
 
 // balise de commentaire. Un commentaire qui se place dans la marge et organise
 // la composition en fonction de ce dernier.
-
 #let comment(page: 0, even: true, placement: top + right, content) = {
   if not even {
     if placement.x == right or placement.x == none {
@@ -275,13 +275,11 @@
 
 
 // force le contenue a continuer sur la prochaine colone de contenue.
-
 #let layout-break() = {
     ((type: "content", content: [~], container-break: meander.colfill),)
 }
 
 // ajoute une balise de contenue.
-
 #let content(content, container-break:true) = {
     if container-break{
     ((type: "content", content: content, container-break: meander.colfill),)
@@ -292,8 +290,8 @@
 
 }
 
-// ajouter l’agencement de page secondaire.
-// méthode privé
+/// ajouter l’agencement de page secondaire.
+/// méthode privé
 #let apply-layout-minor(current-page, minors, majors) = {
   let minor = minors.at(current-page)
   let major = majors.at(current-page)
@@ -312,8 +310,8 @@
 }
 
 
-// ajouter les agencement de texte principale.
-// méthode privé
+/// ajouter les agencement de texte principale.
+/// méthode privé
 #let apply-layout-major(current-page,is-even, majors) = {
   let major = majors.at(current-page)
   if major == () {
@@ -328,9 +326,9 @@
   }
 }
 
-// ajouter les image de page des image qui dépasse de la zone de texte pour
-// s’étendre plus sur une autre page.
-// méthode privé
+/// ajouter les image de page des image qui dépasse de la zone de texte pour
+/// s’étendre plus sur une autre page.
+/// méthode privé
 #let apply-page-image(current-page, images) = {
   let page-images = images.at(current-page)
     
@@ -344,8 +342,8 @@
   }
 }
 
-// ajouter les image de texte, de petite image qui coresspond au la largeur de la zone de texte.
-// méthode privé
+/// ajouter les image de texte, de petite image qui coresspond au la largeur de
+/// la zone de texte. méthode privé
 #let apply-text-image(current-page, text-images,major-layouts, is-even) = {
     let current-page-text-images = text-images.at(current-page)
     let major-layout = major-layouts.at(current-page)
@@ -363,8 +361,8 @@
     }
 }
 
-// Cette fonction sépare tous les éléments contenus en fonction de leur types.
-// méthode privé
+/// Cette fonction sépare tous les éléments contenus en fonction de leur types.
+/// méthode privé
 #let split_element(n-page, seq) = {
     let contents = ()
     let page-images = range(n-page).map(_ => ())
@@ -398,16 +396,22 @@
 ///// composing
 ////////////////////////////////////////////////////////////////////////////////
 
-// Cette fonction permet de recueillir les différentes balises de composition
-// qui lui sont données en argument pour les organiser et composer les éléments
-// entre eux.
-
-// n-pages : Le nombre de pages à composer.
-// force-break: Forcer la composition à commencer sur une page paire ou un paire.
-// seq: La séquence de balise.
-// debug : activer le débugage de meander. 
-
-#let composing(n-pages, force-break: "even", seq,debug:false) = context {
+/// Cette fonction permet de recueillir les différentes balises de composition
+/// qui lui sont données en argument pour les organiser et composer les éléments
+/// entre eux.
+/// n-pages : Le nombre de pages à composer.
+/// force-break: Forcer la composition à commencer sur une page paire ou un paire.
+/// seq: La séquence de balise.
+/// debug : activer le débugage de meander. 
+#let composing(
+    /// The number of page to compose.
+    n-pages,
+    /// force to breake page to start the composing at even or odd page
+    force-break: "even",
+    /// sequence of commande to compose the document
+    seq,
+    /// activate the debug display of the meander documentation
+    debug:false) = context {
     // Gérer le saut de page.
     if force-break == true {
         pagebreak()

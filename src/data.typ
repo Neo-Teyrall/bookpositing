@@ -12,13 +12,11 @@
     outside:none,
     top:none,
     bottom:none) = context {
-        [call]
         let current-marge = second-marge.get()
         if type(inside) == length{
             current-marge.inside = inside
         }
         if type(outside) == length{
-            [outside]
             current-marge.outside = outside
         }
         if type(top) == length{
@@ -27,7 +25,6 @@
         if type(bottom) == length{
             current-marge.bottom = bottom
         }
-        [#current-marge]
         second-marge.update(current-marge)
 }
 

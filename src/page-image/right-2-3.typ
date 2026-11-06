@@ -1,6 +1,6 @@
 #import "/src/utils.typ" 
 #import "/src/data.typ"
-#import "/src/layout.typ":*
+#import "/src/main-layout.typ":*
 
 // Créer un image qui s’étend sur les 2/3 des deux pages et qui occupe plus la
 // page de droite.

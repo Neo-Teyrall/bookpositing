@@ -1,7 +1,7 @@
 #import "/src/bookpositing.typ"
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(
+    bookpositing.secondary-layout.layout-header(
         page:0,
         [
             == image 1-2 : main marge 
@@ -29,7 +29,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(
+    bookpositing.secondary-layout.layout-header(
         page:0,
         [
             == image 1-2 : main marge 
@@ -61,7 +61,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 1-2 : second marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 1-2 : second marge
         #lorem(100)]
     )
     bookpositing.page-image.full-1-2(page:0,
@@ -82,7 +82,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 1-2 : second marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 1-2 : second marge
         #lorem(100)]
     )
     bookpositing.page-image.full-1-2(page:1,
@@ -105,7 +105,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 1-2 : no marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 1-2 : no marge
         #lorem(100)]
     )
     bookpositing.page-image.full-1-2(page:0,
@@ -125,7 +125,7 @@
 })
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 1-2 : no marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 1-2 : no marge
         #lorem(100)]
     )
     bookpositing.page-image.full-1-2(page:1,

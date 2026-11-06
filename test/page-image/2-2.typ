@@ -24,7 +24,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 2-2 : second marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 2-2 : second marge
         #lorem(100)]
     )
     bookpositing.page-image.full-2-2(page:0,
@@ -45,7 +45,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(page:0,[== image 2-2 : no marge
+    bookpositing.secondary-layout.layout-header(page:0,[== image 2-2 : no marge
         #lorem(100)]
     )
     bookpositing.page-image.full-2-2(page:0,

@@ -1,7 +1,7 @@
 #import "/src/bookpositing.typ"
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 main marge
 
@@ -30,7 +30,7 @@
 
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 second marge
 
@@ -58,7 +58,7 @@
 
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 none marge
 

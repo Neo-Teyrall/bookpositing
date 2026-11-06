@@ -1,6 +1,7 @@
 #import "@preview/meander:0.4.4"
 
-#import "layout.typ"
+#import "main-layout.typ"
+#import "secondary-layout.typ"
 
 #let no-x-placement(placement) = {
     if placement.y == none {
@@ -106,15 +107,15 @@
                 boundary: meander.contour.margin(3mm),
                 box(width: 100%, content))
         } else {
-            if current-layout.layout ==  layout.layout-1-3 {
+            if current-layout.layout ==  main-layout.layout-1-3 {
                 large-1-3(placement,is-even,content) 
-            } else if current-layout.layout ==  layout.layout-1-3-right {
+            } else if current-layout.layout ==  main-layout.layout-1-3-right {
                 large-1-3-right(placement,is-even,content) 
             // } else if current-layout.layout ==  layout.layout-1-4 {
             //     placing-1-4(placement,is-even,content)
-                 } else if current-layout.layout ==  layout.layout-2-3 {
+                 } else if current-layout.layout ==  main-layout.layout-2-3 {
                large-2-3(placement,is-even,content) 
-            } else if current-layout.layout ==  layout.layout-2-3-right {
+            } else if current-layout.layout ==  main-layout.layout-2-3-right {
                large-2-3-right(placement,is-even,content) 
             } else {
                 meander.placed(
@@ -254,15 +255,15 @@
                 boundary: meander.contour.margin(3mm),
                 box(stroke:0pt,width: 50%-3mm, content))
         } else {
-            if current-layout.layout ==  layout.layout-1-3 {
+            if current-layout.layout ==  main-layout.layout-1-3 {
                 short-1-3(placement,is-even,content) 
-            } else if current-layout.layout ==  layout.layout-1-3-right {
+            } else if current-layout.layout ==  main-layout.layout-1-3-right {
                 short-1-3-right(placement,is-even,content) 
                 // } else if current-layout.layout ==  layout.layout-1-4 {
                 //     placing-1-4(placement,is-even,content)
-            } else if current-layout.layout ==  layout.layout-2-3 {
+            } else if current-layout.layout ==  main-layout.layout-2-3 {
                 short-2-3(placement,is-even,content) 
-            } else if current-layout.layout ==  layout.layout-2-3-right {
+            } else if current-layout.layout ==  main-layout.layout-2-3-right {
                 short-2-3-right(placement,is-even,content) 
             } else {
                 meander.placed(

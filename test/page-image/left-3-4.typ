@@ -1,7 +1,7 @@
 #import "/src/bookpositing.typ"
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 main marge
 
@@ -30,7 +30,7 @@
 
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 second marge
 
@@ -58,7 +58,7 @@
 
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4 none marge
 
@@ -87,7 +87,7 @@
 
 
 // #bookpositing.composing(2,debug: true, {
-//     bookpositing.layout-header(page:0,
+//     bookpositing.secondary-layout.layout-header(page:0,
 //         [
 //             == 3/4 over marge
 
@@ -104,7 +104,7 @@
 // })
 
 // #bookpositing.composing(2,debug: true, {
-//     bookpositing.layout-header(page:0,
+//     bookpositing.secondary-layout.layout-header(page:0,
 //         [
 //             == 3/4 
 
@@ -122,7 +122,7 @@
 
 
 // #bookpositing.composing(2,debug:true, {
-//     bookpositing.layout-header(page:0,[
+//     bookpositing.secondary-layout.layout-header(page:0,[
 //         == 3/4-right over marge
 
 //         #lorem(100)]
@@ -138,7 +138,7 @@
 
 
 // #bookpositing.composing(2,debug:true, {
-//     bookpositing.layout-header(page:0,[
+//     bookpositing.secondary-layout.layout-header(page:0,[
 //         == 3/4-right
 
 //         #lorem(100)]

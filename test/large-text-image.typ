@@ -13,7 +13,7 @@
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
 
-    bookpositing.layout-header(page:0,[
+    bookpositing.secondary-layout.layout-header(page:0,[
         == full 2 page
         
         #lorem(100)
@@ -38,7 +38,7 @@
         placement:top + right,
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == 3/4
 
@@ -67,7 +67,7 @@
         placement:top + right,
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
-    bookpositing.layout-header(page:0,[
+    bookpositing.secondary-layout.layout-header(page:0,[
         == 1/3 
 
         #lorem(150)]
@@ -98,7 +98,7 @@
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
 
-        bookpositing.layout-header(page:0,[
+        bookpositing.secondary-layout.layout-header(page:0,[
         == 1/3 - right
 
         #lorem(140)]
@@ -163,7 +163,7 @@
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
 
-     bookpositing.layout-header(full-page:true,[
+     bookpositing.secondary-layout.layout-header(full-page:true,[
     == 2/3
 
         #lorem(100)
@@ -200,7 +200,7 @@
         box(stroke:1pt, text(fill:red,lorem(30)))
     )
 
-    bookpositing.layout-header([
+    bookpositing.secondary-layout.layout-header([
     == 2/3-right
 
         #lorem(100)

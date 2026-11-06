@@ -1,7 +1,7 @@
 #import "/src/bookpositing.typ"
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred : main marge
 
@@ -31,7 +31,7 @@
 })
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred : second marge
 
@@ -61,7 +61,7 @@
 })
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred none marge
 
@@ -93,7 +93,7 @@
 
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred full : main marge
 
@@ -112,7 +112,7 @@
 })
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred large : second marge
 
@@ -132,7 +132,7 @@
 })
 
 #bookpositing.composing(2,debug: true, {
-    bookpositing.layout-header(page:0,
+    bookpositing.secondary-layout.layout-header(page:0,
         [
             == centred none marge
 

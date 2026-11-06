@@ -2,7 +2,7 @@
 
 #bookpositing.composing(2, {
 
-    bookpositing.layout-header(page:0,[
+    bookpositing.secondary-layout.layout-header(page:0,[
         == 1/3 
 
         #lorem(150)]
@@ -19,7 +19,7 @@
 
 #bookpositing.composing(2, {
 
-    bookpositing.layout-header(page:0,[
+    bookpositing.secondary-layout.layout-header(page:0,[
         == 1/3 
 
         #lorem(150)]
@@ -38,7 +38,7 @@
 
 #bookpositing.composing(2,debug:true, {
 
-    bookpositing.layout-header(page:0,[
+    bookpositing.secondary-layout.layout-header(page:0,[
         == 1/3 
 
         #lorem(150)]

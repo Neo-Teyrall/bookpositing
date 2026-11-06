@@ -2,7 +2,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header(full-page: true, [
     == 2/3
     
     #lorem(100)
@@ -29,7 +29,7 @@
 
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header(full-page: true, [
     == 2/3
     
     #lorem(100)
@@ -56,7 +56,7 @@
 })
 
 #bookpositing.composing(2, debug: true, {
-  bookpositing.layout-header(full-page: true, [
+  bookpositing.secondary-layout.layout-header(full-page: true, [
     == 2/3
     
     #lorem(100)
@@ -83,7 +83,7 @@
 })
 
 // #bookpositing.composing(2, debug: true, {
-//   bookpositing.layout-header([
+//   bookpositing.secondary-layout.layout-header([
 //     == 2/3-right
 
 //     #lorem(100)
@@ -103,7 +103,7 @@
 
 
 // #bookpositing.composing(2,debug:true, {
-//     bookpositing.layout-header([
+//     bookpositing.secondary-layout.layout-header([
 //     == 2/3-right
 
 //         #lorem(100)

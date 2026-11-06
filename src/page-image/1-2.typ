@@ -1,6 +1,6 @@
 #import "@preview/meander:0.4.4"
 
-#import "/src/layout.typ" : *
+#import "/src/main-layout.typ" : *
 #import "/src/data.typ"
 #import "/src/utils.typ"
 

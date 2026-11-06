@@ -1,6 +1,6 @@
 #import "/src/utils.typ" 
 #import "/src/data.typ"
-#import "/src/layout.typ":*
+#import "/src/main-layout.typ":*
 
 #let left-1-3(page: 0, marge: "main", content) = {
     let height = 100%

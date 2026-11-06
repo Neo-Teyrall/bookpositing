@@ -6,11 +6,6 @@
     (top: 1.5cm, inside:1cm, bottom: 1.5cm, outside:1cm)
 )
 
-// #let second-marge = state("main-marge", (
-//   odd: (top: 1.5cm, left: 0cm, bottom: 1.5cm, right: 1cm),
-//   even: (top: 1.5cm, left: 1cm, bottom: 1.5cm, right: 0cm),
-// ))
-
 
 #let set_second-marge(
     inside: none,
@@ -34,71 +29,6 @@
         }
         [#current-marge]
         second-marge.update(current-marge)
-}
-
-
-
-#let get-main-side-marge() = {
-    (page.margin.left, page.margin.right)
-}
-
-#let get-second-side-marge() = {
-    (second-marge.get().outside, second-marge.get().outside)
-}
-
-#let get_outside() =  {
-    if type(page.margin) != dictionary {
-        page.margin
-    } else if page.margin.keys().contains("outside"){
-        page.margin.outside
-    } else if page.margin.keys().contains("x"){
-        page.margin.x
-    } else if page.margin.keys().contains("right") and page.margin.keys().contains("left") {
-        if page.margin.right == page.margin.left {
-            page.margin.right
-        } else {
-            panic("Bookpositing::get_outisde() -> impossible de déterminer la valeur outside pensé a définir le parametre \"page.margin.outside\" ou que les page.margin.right et page.margin.left soit egaux:
-           https://typst.app/docs/reference/layout/page/#parameters-margin " )
-        }
-    }
-}
-
-#let get_inside() = {
-    if type(page.margin) != dictionary {
-        page.margin
-    }
-    if page.margin.keys().contains("inside"){
-        page.margin.inside
-    }
-    if page.margin.keys().contains("x"){
-        page.margin.x
-    }
-    if page.margin.keys().contains("right") and page.margin.keys().contains("left") {
-        if page.margin.right == page.margin.left {
-            page.margin.right
-        } else {
-            panic("Bookpositing::get_outisde() -> impossible de déterminer la valeur inside pensé a définir le parametre \"page.margin.inside\" ou que les page.margin.right et page.margin.left soit egaux
-https://typst.app/docs/reference/layout/page/#parameters-margin
-" )
-        }
-    }
-
-}
-#let get-text-region-width() = {
-    page.width - page.margin.right - page.margin.left
-}
-
-#let get_page_layout() = {
-    (height: (
-        std.page.height
-        - std.page.margin.top
-        - std.page.margin.bottom
-    ),
-    width: (
-        std.page.width
-        - std.page.margin.right
-        - std.page.margin.left
-    ),)
 }
 
 #let marge-debug(body) = {

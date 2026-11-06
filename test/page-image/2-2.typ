@@ -1,14 +1,7 @@
 #import "/src/bookpositing.typ"
 
 #bookpositing.composing(2, debug: true, {
-    bookpositing.layout-header(
-        page:0,
-        [
-            == image 2-2 : main marge 
-            #lorem(100)
-        ]
-    )
-
+    
     bookpositing.page-image.full-2-2(page:0,
         marge: "main",
         height:20%,

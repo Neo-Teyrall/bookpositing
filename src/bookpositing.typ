@@ -6,6 +6,7 @@
 #import "text-image.typ"
 #import "layout.typ": *
 #import "page-image.typ"
+#import "utils.typ" : *
 #import "data.typ" : *
 
 ////////////////////////////////////////////////////////////////////////////////

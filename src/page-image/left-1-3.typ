@@ -7,7 +7,7 @@
     let placement = top
 
     let get_w() = (
-        std.page.width / 2 + data.get_inside()*2
+        std.page.width / 2 + utils.get_inside()*2
     )
 
     let odd-image() = {

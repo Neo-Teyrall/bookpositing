@@ -2,7 +2,7 @@
 name = "bookpositing"
 
 version = "0.1.0"
-entrypoint = "src/lib.typ"
+entrypoint = "src/bookpositing.typ"
 
 authors = ["William Margerit"]
 description = "Book composition tools base on meander."

@@ -84,7 +84,7 @@
         margin: 6mm,
       )
     } else {
-        let size = measure(box(width: utils.get_page_layout().width, content))
+        let size = measure(box(width: get_page_layout().width, content))
       
       meander.container(
         width: 50% - 3mm,

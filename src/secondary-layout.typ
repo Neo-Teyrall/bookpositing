@@ -16,7 +16,7 @@
       meander.container(
         dx: -6%,
         width: 90%,
-        height: size.height + 1em,
+        height: size.height + 1em, 
         margin: 6mm,
       )
     } else if major == "1/3" {
@@ -66,7 +66,7 @@
   let layout(major: none) = {
     // en fonction du layout principale adapter la découpe
     if major == "1/3-right" {
-      let size = measure(box(width: page-layout.width * 90%, content))
+        let size = measure(box(width: get_page_layout().width * 90%, content))
       
       meander.container(
         dx: -6%,
@@ -76,7 +76,7 @@
       )
     } else if major == "1/3" {} else if major == "2/3-right" {
       let w = 78%
-      let size = measure(box(width: page-layout.width * w, content))
+      let size = measure(box(width: get_page_layout().width * w, content))
       meander.container(
         dx: -4%,
         width: w,

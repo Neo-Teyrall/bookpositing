@@ -207,7 +207,7 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
     if placement == top {
       (
           get_top() + get_bleed_top(),
-          -(std.page.margin.top + std.page.bleed),
+          -(get_top() + get_bleed_top()),
       )
     } else if placement == bottom {
       (

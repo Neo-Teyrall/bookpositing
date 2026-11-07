@@ -200,7 +200,7 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
           get-second-side-marge().sum(),
       )
   }
-} 
+}
 
 #let get_y_shift_marge(marge: "main", placement: top) = {
   if marge == "none" {
@@ -299,3 +299,109 @@ https://typst.app/docs/reference/layout/page/#parameters-margin
         get_text_width()
     ),)
 }
+
+
+#let marge-debug(body) = {
+    set std.page(
+       foreground: context{
+        if calc.even(counter(std.page).get().first()) {
+        [
+            #place(
+                top+left,
+                dy : get_top() + std.page.bleed,
+                line(length:100%,stroke: 2pt + blue))
+            #place(
+                bottom+left,
+                dy : -(get_bottom() +get_bleed_bottom()),
+                line(length:100%,stroke:2pt + blue))
+            #place(
+                top+left,
+                dx : get_outside() + get_bleed_outside(), 
+                polygon(stroke:2pt + blue,(0pt,0pt),(0pt,100%)))
+            #place(
+                top+right,
+                dx : -(get_inside() + get_bleed_inside()),
+                polygon(stroke:2pt + blue,(0pt,0pt),(0pt,100%)))
+
+            #place(
+                top+left,
+                dy : data.second-marge.get().top+ get_bleed_top(),
+                line(length:100%,stroke: 2pt + purple))
+            #place(
+                bottom+left,
+                dy : - (data.second-marge.get().bottom + get_bleed_bottom()),
+                line(length:100%,stroke:2pt + purple))
+            #place(
+                top+left,
+                dx : data.second-marge.get().outside + get_bleed_outside(),
+                polygon(stroke:2pt + purple,(0pt,0pt),(0pt,100%)))
+            #place(
+                top+right,
+                dx : -(data.second-marge.get().inside + get_bleed_inside()),
+                polygon(stroke:2pt + purple,(0pt,0pt),(0pt,100%)))
+
+
+            #place(top+left,
+                dy : std.page.bleed,
+                line(length:100%,stroke: 2pt + gray))
+            #place(bottom+left,
+                dy : - (std.page.bleed),
+                line(length:100%,stroke:2pt + gray))
+            #place(top+left,
+                dx : std.page.bleed,
+                polygon(stroke:2pt + gray,(0pt,0pt),(0pt,100%)))
+            #place(top+right,
+                dx : -(std.page.bleed),
+                polygon(stroke:2pt + gray,(0pt,0pt),(0pt,100%))
+            )
+            
+        ]} else {[
+            #place(top+left,
+                dy : get_top() + get_bleed_top(),
+                line(length:100%,stroke: 2pt + blue))
+            #place(bottom+left,
+                dy : -(get_bottom() + get_bleed_bottom()),
+                line(length:100%,stroke:2pt + blue))
+            #place(top+left,
+                dx : get_inside() + get_bleed_inside(),
+                polygon(stroke:2pt + blue,(0pt,0pt),(0pt,100%)))
+            #place(top+right,
+                dx : -(get_outside() + get_bleed_outside()),
+                polygon(stroke:2pt + blue,(0pt,0pt),(0pt,100%)))
+            
+            #place(top+left,
+                dy : data.second-marge.get().top + get_bleed_top(),
+                line(length:100%,stroke: 2pt + purple))
+            #place(bottom+left,
+                dy : - (data.second-marge.get().bottom + get_bleed_bottom()),
+                line(length:100%,stroke:2pt + purple))
+            #place(top+left,
+                dx : data.second-marge.get().inside  + get_bleed_inside(),
+                polygon(stroke:2pt + purple,(0pt,0pt),(0pt,100%)))
+            #place(top+right,
+                dx : -(data.second-marge.get().outside + get_bleed_outside()),
+                polygon(stroke:2pt + purple,(0pt,0pt),(0pt,100%)))
+            
+
+            #place(top+left,
+                dy : get_bleed_top(),
+                line(length:100%,stroke: 2pt + gray))
+            #place(bottom+left,
+                dy : - (get_bleed_bottom()),
+                line(length:100%,stroke:2pt + gray))
+            #place(top+left,
+                dx : get_bleed_inside(),
+                polygon(stroke:2pt + gray,(0pt,0pt),(0pt,100%)))
+            #place(top+right,
+                dx : -(get_bleed_outside()),
+                polygon(stroke:2pt + gray,(0pt,0pt),(0pt,100%))
+            )
+
+        ]
+        }
+    },
+        
+    )
+    body
+}
+
